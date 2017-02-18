@@ -1,7 +1,5 @@
 # Dough
-A _really_ simple money library, for when you don't care about currencies, string formatting, or units.
-
-Dough is a painfully simple package, to make handling money more explicit, and a little safer, while trying to avoid making your code look awkward. 
+A _really_ simple money library, for when you don't care about currencies, string formatting, or units. The aim of Dough is to make handling money more explicit, and a little safer, while trying to avoid making your code look awkward. 
 
 ### Assumptions
 This package makes a few assumptions to keep things simple:
@@ -25,4 +23,12 @@ The main reason for this package's existence is to provide a method for division
 For example, to calculate a 10% discount on a price, you can do this:
 
 	var price Money = 99
-	allocations := price.Share([]unit{90,10})
+	shares := price.Share([]unit{90,10})
+	discounted := shares[0]
+	saving := shares[1]
+	
+Percentage discounting is such a common use of `Share()`, that there's also a `PercentageDiscount()` method, which takes an `int` 0 <= p <=100.
+
+	var price Money = 99
+	discounted, error := price.PercentageDiscount(10)
+

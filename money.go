@@ -66,3 +66,12 @@ func (x Money) Share(weightings []uint) []Money {
 
 	return allocations
 }
+
+// PercentageDiscount discounts a Money by the given percentage, returning the discounted amount.
+func (x Money) PercentageDiscount(p uint) (Money, error) {
+	if p < 0 || p > 100 {
+		return x, fmt.Errorf("Percentage must be ≥0, ≤100. %d given.", p)
+	}
+	all := x.Share([]uint{100 - p, p})
+	return all[0], nil
+}

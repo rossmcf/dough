@@ -73,3 +73,40 @@ func TestCanAllocate(t *testing.T) {
 		}
 	}
 }
+
+func TestCanDiscount(t *testing.T) {
+	var cases = []struct {
+		a    Money
+		p    uint
+		want Money
+	}{
+		{100, 0, 100},
+		{100, 100, 0},
+		{100, 1, 99},
+		{100, 50, 50},
+	}
+	for ci, c := range cases {
+		res, err := c.a.PercentageDiscount(c.p)
+		if err != nil {
+			t.Errorf("Case %d. Error discounting %d by %d%%: %s", ci, c.a, c.p, err)
+			return
+		}
+		if c.want != res {
+			t.Errorf("Case %d. Incorrect result. Discounted %d by %d%%, got %d.", ci, c.a, c.p, res)
+		}
+	}
+}
+
+func TestCanRejectBadPercentageDiscount(t *testing.T) {
+	var cases = []uint{
+		101,
+		11111,
+	}
+	var a Money = 100
+	for i, p := range cases {
+		_, err := a.PercentageDiscount(p)
+		if err == nil {
+			t.Errorf("Case %d. Expected percentage discount of %d to be rejected, was accepted.", i, p)
+		}
+	}
+}
