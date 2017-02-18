@@ -1,4 +1,7 @@
 # Dough
+
+[![CircleCI](https://circleci.com/gh/rossmcf/dough/tree/master.svg?style=svg)](https://circleci.com/gh/rossmcf/dough/tree/master)
+
 A _really_ simple money library, for when you don't care about currencies, string formatting, or units. The aim of Dough is to make handling money more explicit, and a little safer, while trying to avoid making your code look awkward. 
 
 ### Assumptions
