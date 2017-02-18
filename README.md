@@ -1,6 +1,8 @@
 # Dough
 
 [![CircleCI](https://circleci.com/gh/rossmcf/dough/tree/master.svg?style=svg)](https://circleci.com/gh/rossmcf/dough/tree/master)
+[![godoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/rossmcf/dough)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rossmcf/dough)](https://goreportcard.com/report/github.com/rossmcf/dough)
 
 A _really_ simple money library, for when you don't care about currencies, string formatting, or units. The aim of Dough is to make handling money more explicit, and a little safer, while trying to avoid making your code look awkward. 
 
